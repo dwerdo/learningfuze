@@ -40,27 +40,27 @@ controller('InfoCtrl', function($scope, $sce, sequenceInfo, $routeParams, $locat
         switch($scope.task) {
             case 't0':
                 editor.setValue('');
-                infoPage(sequence.tasks[0].options.type, sequence.tasks[0].lines, 'Intro');
+                infoPage(sequence.tasks[0].options.type, sequence.tasks[0].lines, sequence.tasks[0].name);
                 $location.nextPage = 't5';
                 $location.task = sequence.tasks[0];
                 break;
             case 't5':
                 editor.setValue('');
-                infoPage(sequence.tasks[1].options.type, sequence.tasks[1].lines, 'Basic HTML');
+                infoPage(sequence.tasks[1].options.type, sequence.tasks[1].lines, sequence.tasks[1].name);
                 $location.nextPage = 't6';
                 $location.type = sequence.tasks[1].options.type;
                 $location.task = sequence.tasks[1];
                 break;
             case 't6':
                 editor.setValue('');
-                infoPage(sequence.tasks[2].options.type, sequence.tasks[2].lines, 'Basic CSS');
+                infoPage(sequence.tasks[2].options.type, sequence.tasks[2].lines, sequence.tasks[2].name);
                 $location.nextPage = 't8';
                 $location.type = sequence.tasks[2].options.type;
                 $location.task = sequence.tasks[2];
                 break;
             case 't8':
                 editor.setValue('');
-                infoPage(sequence.tasks[3].options.type, sequence.tasks[3].lines, 'The End');
+                infoPage(sequence.tasks[3].options.type, sequence.tasks[3].lines, sequence.tasks[3].name);
                 break;
             default:
                 alert('error');
