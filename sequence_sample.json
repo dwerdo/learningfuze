@@ -1,0 +1,77 @@
+[
+  {
+    "id": "set01",
+    "name": "Week 1 - HTML/CSS",
+    "startTime": 1407481200,
+    "sequences": [
+      {
+        "id": "s1",
+        "name": "Seq 1",
+        "tasks": [
+          {
+            "id": "t0",
+            "name": "Intro",
+            "options": {
+              "type": "info",
+              "name": "Intro",
+              "status": 1
+            },
+            "lines": "Sequence Rules:<br/><ul><li>When the sequence begins, type in the code as it appears in the lesson board and hit enter when the line ends</li><li>For these sequences, you must type in each letter, character, AND spaces EXACTLY as they appear</li><li>Do not try to interpret any of the information at this stage, just relax and start coding</li></ul><br/>Hit <strong>ENTER</strong> to continue"
+          },
+          {
+            "id": "t5",
+            "name": "Basic HTML",
+            "message": "You have completed this task. Hit ENTER to continue.",
+            "options": {
+              "type": "code",
+              "show": "2",
+              "status": 1
+            },
+            "lines": [
+              "&#60;html&#62;",
+              "&#60;body&#62;",
+              "&#60;p&#62;This is a paragraph!&#60;/p&#62;",
+              "&#60;/body&#62;",
+              "&#60;/html&#62;"
+            ]
+          },
+          {
+            "id": "t6",
+            "name": "Basic CSS",
+            "message": "You have completed this task. Hit ENTER to continue.",
+            "options": {
+              "type": "code",
+              "show": "3",
+              "status": 0
+            },
+            "lines": [
+              "&#60;html&#62;",
+              "&#60;head&#62;",
+              "&#60;style&#62;",
+              "h1 { color: pink; }",
+              "p { color: green; font-size: 15px; }",
+              "&#60;/style&#62;",
+              "&#60;/head&#62;",
+              "&#60;body&#62;",
+              "&#60;h1&#62;This is the first and largest header&#60;/h1&#62;",
+              "&#60;p&#62;This is the first paragraph&#60;/p&#62;",
+              "&#60;p&#62;This is the second paragraph&#60;/p&#62;",
+              "&#60;/body&#62;",
+              "&#60;/html&#62;"
+            ]
+          },
+          {
+            "id": "t8",
+            "name": "The End",
+            "options": {
+              "type": "info",
+              "name": "The End",
+              "status": 0
+            },
+            "lines": "All done! Yay!"
+          }
+        ]
+      }
+    ]
+  }
+]

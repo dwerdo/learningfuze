@@ -1,0 +1,42 @@
+<html lang="en" ng-app="myApp">
+<head>
+<title>ACE in Action</title>
+<link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<style type="text/css" media="screen">
+    #editor { 
+        margin-top: 10px;
+        height: 200px;
+    }
+</style>
+
+
+
+</head>
+<body>   
+<div class="container" ng-controller="SequencesCtrl">
+    <h1>Sequences</h1>
+    <ul>
+        <li {{ ng-repeat="sequence in results.sequences"  }}>
+            Sequence: <a href>{{ sequence.id }}</a>
+            <ul>
+                <li {{ ng-repeat="task in sequence.tasks" }}>
+                    Task: <a href="#/tasks/{{ task.id }}" ng-click="$parent.current_task = task.id">{{ task.name }}</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Info Container</h2>
+
+    <div id="info-container" ng-view></div>
+    <div id="editor"></div>
+</div>
+    
+    <script src="./bower_components/ace/build/src/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="./bower_components/angular/angular.js"></script>
+    <script src="./bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>

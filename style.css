@@ -1,0 +1,8 @@
+.container {
+    position: relative;
+    padding: 30px;
+}
+
+.hightlight {
+    background: yellow;
+}
