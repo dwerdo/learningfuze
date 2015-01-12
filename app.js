@@ -35,7 +35,7 @@ controller('SequencesCtrl', function($scope, sequenceInfo) {
     });
 }).
 
-controller('InfoCtrl', function($scope, $sce, sequenceInfo, $routeParams, $location, $rootScope) {
+controller('InfoCtrl', function($scope, $sce, sequenceInfo, $routeParams, $location) {
     sequenceInfo().then(function(data) {
         var sequence = data.data[0].sequences[0];
         var taskIndex = 1;
