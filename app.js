@@ -5,11 +5,7 @@ var editor = ace.edit("editor");
 var sequenceData = './sequence_sample.json';
 
 angular.module('myApp', ['ngRoute']).
-factory('sequenceInfo', function($http) {
-    return function() {
-        return $http.get(sequenceData);
-    };
-}).
+
 config(function($routeProvider) {
     $routeProvider.when('/tasks/:task', {
         template: '<h3 ng-bind-html="name"></h3>' + 
@@ -23,6 +19,13 @@ config(function($routeProvider) {
         }
     });
 }).
+
+factory('sequenceInfo', function($http) {
+    return function() {
+        return $http.get(sequenceData);
+    };
+}).
+
 controller('SequencesCtrl', function($scope, sequenceInfo) {
     sequenceInfo().success(function(data) {
         $scope.results = data[0];
@@ -31,6 +34,7 @@ controller('SequencesCtrl', function($scope, sequenceInfo) {
         alert('error');
     });
 }).
+
 controller('InfoCtrl', function($scope, $sce, sequenceInfo, $routeParams, $location, $rootScope) {
     sequenceInfo().then(function(data) {
         var sequence = data.data[0].sequences[0];
@@ -68,7 +72,8 @@ controller('InfoCtrl', function($scope, $sce, sequenceInfo, $routeParams, $locat
 
         editor.getSession().on('change', function(e) {
             if (e.data.action === 'insertText') {
-                validate(e, sequence, $scope, function gotoNext() {
+                
+                validate(e, function gotoNext() {
                     $scope.$apply(function() {
                         $location.path('/tasks/' + $location.nextPage);
                     });
@@ -77,8 +82,16 @@ controller('InfoCtrl', function($scope, $sce, sequenceInfo, $routeParams, $locat
             }
         });
 
-        
-        function validate(e, sequence, $scope, gotoNext) {
+        function infoPage(type, lines, name) {
+            $scope.name = $sce.trustAsHtml(name)
+            if (type === 'info') {
+                $scope.info = $sce.trustAsHtml(lines);
+            } else {
+                $scope.info = $sce.trustAsHtml(lines[0]);
+            }
+        }
+
+        function validate(e, gotoNext) {
             if ($location.path() === '/tasks/t0' && e.data.text.charCodeAt() === 10) {
                 gotoNext();
             }
@@ -86,12 +99,12 @@ controller('InfoCtrl', function($scope, $sce, sequenceInfo, $routeParams, $locat
             if ($location.type === 'code') {
                 if (editor.getValue() === document.getElementById('info').textContent) {
                     var length = $location.task.lines.length;
+                    
                     function validateTask() {
                         if (taskIndex === length) {
                             gotoNext();
                         } else {
                             $scope.$apply(function() {
-
                                 $scope.info = $sce.trustAsHtml($location.task.lines[taskIndex]);
                                 editor.setValue('');
                             });
@@ -106,12 +119,5 @@ controller('InfoCtrl', function($scope, $sce, sequenceInfo, $routeParams, $locat
         }
     });
 
-    function infoPage(type, lines, name) {
-        $scope.name = $sce.trustAsHtml(name)
-        if (type === 'info') {
-            $scope.info = $sce.trustAsHtml(lines);
-        } else {
-            $scope.info = $sce.trustAsHtml(lines[0]);
-        }
-    }
+    
 });
